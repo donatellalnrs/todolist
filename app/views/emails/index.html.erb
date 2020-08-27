@@ -1,21 +1,22 @@
-<div>
+<div class="row ml-4 mb-2">
   <div class="form">
     <%= form_tag(emails_path, method: :post, class: "form", remote: true) do %>
-    <%= submit_tag 'Receive an email', :name => 'create'%>
-  <% end %>
+      <%= submit_tag 'Recevoir un email', :name => 'create'%>
+    <% end %>
+  </div>
 </div>
 
-  <div class="row">
+  <div class="row ml-3">
     <div class="col-4" id="email-list">
-      <% @emails.each do |email|  %>
+      <% @emails.sort.reverse.each do |email|  %>
         <div class="card">
-          <%= email.object %>,
+          <%= link_to "#{email.object}", email_path(email.id), remote:true %>
         </div>
       <% end %>
     </div>
 
-    <div class="card col-7">
-      <%= @emails[0].body %>,
+
+    <div class="card col-7" id="email-body">
     </div>
   </div>
 </div>
