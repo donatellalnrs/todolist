@@ -83,3 +83,6 @@ production:
   database: todolist-app_production
   username: todolist-app
   password: <%= ENV['TODOLIST-APP_DATABASE_PASSWORD'] %>
+
+host: /tmp
+port: 5432
