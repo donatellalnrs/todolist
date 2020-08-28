@@ -1,1 +1,5 @@
-document.getElementById("email-body").insertAdjacentHTML("afterbegin", "<%= j render 'emailbody', email: @email %>")
+{
+  let emailBody = document.getElementById("email-body")
+  emailBody.innerHTML = ''
+  emailBody.insertAdjacentHTML("afterbegin", "<%= j render 'emailbody', email: @email %>")
+}

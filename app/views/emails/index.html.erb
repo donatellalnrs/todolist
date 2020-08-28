@@ -9,7 +9,7 @@
 <div class="row ml-3">
   <div class="col-4" id="email-list">
     <% @emails.sort.reverse.each do |email|  %>
-      <div class="card">
+      <div class="card" id="<%= email.id %>">
         <%= check_box_tag :read, true, false, data: { remote: true, url: email_path(email.id), params: { object: email.object, body: email.body }.to_param, method: "put" }%>
         <% if email.read == true %>
           <%= link_to "#{email.object}", email_path(email.id), remote:true %>
