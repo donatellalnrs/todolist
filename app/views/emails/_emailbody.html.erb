@@ -1,11 +1,11 @@
 <div class="row mb-4 ml-4">
   <div class="email-body">
-    <strong><%= email.object %></strong><br/>
-    <%= email.body %>
+    <strong><%=email.object%></strong><br/>
+    <%=email.body%>
   </div>
 </div>
 
 <div class="row mb-4 ml-4">
-  <button class="btn btn-primary ml-4" name="delete-button">Supprimer</button>
-  <button class="btn btn-secondary ml-4" name="unread-button">Marquer comme non lu</button>
+  <%=link_to "Supprimer", email_path(email.id), method: :delete, class:"btn btn-primary ml-4", remote:true%>
+  <%=link_to "Marquer comme non lu", email_path(email.id), class:"btn btn-secondary ml-4", remote:true%>
 </div>

@@ -1,22 +1,25 @@
 <div class="row ml-4 mb-2">
   <div class="form">
     <%= form_tag(emails_path, method: :post, class: "form", remote: true) do %>
-      <%= submit_tag 'Recevoir un email', :name => 'create'%>
+      <%= submit_tag 'Recevoir un email', :name => 'create', class: "btn btn-dark" %>
     <% end %>
   </div>
 </div>
 
-  <div class="row ml-3">
-    <div class="col-4" id="email-list">
-      <% @emails.sort.reverse.each do |email|  %>
-        <div class="card">
+<div class="row ml-3">
+  <div class="col-4" id="email-list">
+    <% @emails.sort.reverse.each do |email|  %>
+      <div class="card">
+        <%= check_box_tag :read, true, false, data: { remote: true, url: email_path(email.id), params: { object: email.object, body: email.body }.to_param, method: "put" }%>
+        <% if email.read == true %>
           <%= link_to "#{email.object}", email_path(email.id), remote:true %>
-        </div>
-      <% end %>
-    </div>
+        <% else %>
+          <strong><%= link_to "#{email.object}", email_path(email.id), remote:true %></strong>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-
-    <div class="card col-7" id="email-body">
-    </div>
+  <div class="card col-7" id="email-body">
   </div>
 </div>
